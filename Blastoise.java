@@ -5,4 +5,10 @@ public class Blastoise extends Pokemon{
   type = "water";
   fainted = false;
   
+  public class Scratch extends Event{
+    
+    public void action(Trainer1.current_pokemon, Trainer2.current_pokemon){
+      
+    }
+  }
 }
