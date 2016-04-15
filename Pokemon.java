@@ -1,6 +1,6 @@
 abstract class Pokemon{
   private String name;
-  private int hp_max;
+  private final int hp_max;
   private int hp_actual;
   private String type;
 
