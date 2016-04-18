@@ -12,7 +12,7 @@ public class BattleController{
 		
 		t2.party[0] = new Pikachu();
 		t2.party[1] = new Charmander();
-		
+
 		t1.party[0].activate();
 		t2.party[0].activate();
 		
@@ -23,6 +23,14 @@ public class BattleController{
 			t2.refreshTarget(t1.party);
 			Event temp1 = t1.think(t2.party);
 			Event temp2 = t2.think(t1.party);
+			if(t1.current.fainted()){
+				temp1.action();
+				continue;
+			}
+			if(t2.current.fainted()){
+				temp2.action();
+				continue;
+			}
 			
 			if(temp2.priority() > temp1.priority()){
 				t2.refreshTarget(t1.party);

@@ -16,7 +16,6 @@ public class Trainer{
 		int index;
 		public Attack(Pokemon foe){
 			target = foe;
-
 		}
 		void action(){
 			party[current_pokemon].attack(target, index);
@@ -30,7 +29,7 @@ public class Trainer{
 	private class Item extends Event{
 		private long priority = 2;
 		void action(){
-			party[current_pokemon].heal(50);
+			party[current_pokemon].heal(35);
 		}
 		public String description(){
 			return "Blank";
