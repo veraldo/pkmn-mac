@@ -3,6 +3,7 @@ abstract class Pokemon{
 	long hp;
 	boolean fainted;
 	boolean typeChart[][];
+	boolean active = false;
 	
 	abstract void damage(long n);
 	abstract void heal(long n);
@@ -14,4 +15,7 @@ abstract class Pokemon{
 	abstract void attack(Pokemon inimigo, int index);
 	
 	abstract boolean fainted();
+	abstract boolean isActive();
+	abstract void activate();
+	abstract void deactivate();
 }

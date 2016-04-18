@@ -1,11 +1,11 @@
-public class Charmander extends Pokemon{
-	final String name = "Charmander";
+public class Pikachu extends Pokemon{
+	final String name = "Pikachu";
 	long hp;
-	final long hpmax = 100;
+	final long hpmax = 110;
 	boolean fainted = false;
 	boolean active = false;
 	
-	public Charmander(){
+	public Pikachu(){
 		hp = hpmax;
 	}
 	
@@ -40,13 +40,13 @@ public class Charmander extends Pokemon{
 	
 	void attack(Pokemon foe, int index){
 		if(!fainted && !foe.fainted()){
-			if(index == 0){ //scratch
-				System.out.println(name + " used scratch");
-				foe.damage(40);
+			if(index == 0){ //tackle
+				System.out.println(name + " used tackle");
+				foe.damage(35);
 			}
-			if(index == 1){ //flamethrower
-				System.out.println(name + " used flamethrower");
-				foe.damage(25);
+			if(index == 1){ //thundershock
+				System.out.println(name + " used thundershock");
+				foe.damage(65);
 			}
 		}
 	}
