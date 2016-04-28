@@ -1,12 +1,13 @@
-public class Charmander extends Pokemon{
-	final String name = "Charmander";
+
+public class Squirtle extends Pokemon{
+	final String name = "Squirtle";
 	long hp;
-	final int type = 1;
-	final long hpmax = 100;
+	final int type = 0;
+	final long hpmax = 125;
 	boolean fainted = false;
 	boolean active = false;
 	
-	public Charmander(){
+	public Squirtle(){
 		hp = hpmax;
 	}
 	
@@ -41,10 +42,10 @@ public class Charmander extends Pokemon{
 	
 	void attack(Pokemon foe, int index){
 		if(!fainted && !foe.fainted()){
-			if(index == 0){ //scratch
-				System.out.println(name + " used scratch");
+			if(index == 0){ //tackle
+				System.out.println(name + " used tackle");
 				TypeChart t = new TypeChart();
-				int damage = 40; 
+				int damage = 30; 
 				if( t.typeCompare(type,foe.type())>0){
 					damage *= 2;
 					System.out.println("It's super effective!");
@@ -56,12 +57,9 @@ public class Charmander extends Pokemon{
 
 				foe.damage(damage);
 			}
-			if(index == 1){ //flamethrower
-				System.out.println(name + " used flamethrower");
-				foe.damage(25);
-			}
-			if(index == 2){
-				
+			if(index == 1){ //Water Cannon
+				System.out.println(name + " used water cannon");
+				foe.damage(55);
 			}
 		}
 	}
@@ -80,7 +78,6 @@ public class Charmander extends Pokemon{
 	void deactivate(){
 		active = false;
 	}
-	
 	int type(){
 		return type;
 	}

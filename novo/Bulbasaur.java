@@ -1,12 +1,12 @@
-public class Charmander extends Pokemon{
-	final String name = "Charmander";
+public class Bulbasaur extends Pokemon{
+	final String name = "Bulbasaur";
 	long hp;
-	final int type = 1;
-	final long hpmax = 100;
+	final int type = 2;
+	final long hpmax = 105;
 	boolean fainted = false;
 	boolean active = false;
-	
-	public Charmander(){
+
+	public Bulbasaur(){
 		hp = hpmax;
 	}
 	
@@ -40,11 +40,11 @@ public class Charmander extends Pokemon{
 	}
 	
 	void attack(Pokemon foe, int index){
+		TypeChart t = new TypeChart();
 		if(!fainted && !foe.fainted()){
-			if(index == 0){ //scratch
-				System.out.println(name + " used scratch");
-				TypeChart t = new TypeChart();
-				int damage = 40; 
+			if(index == 0){ //razor leaf
+				System.out.println(name + " used razor leaf");
+				int damage = 45;
 				if( t.typeCompare(type,foe.type())>0){
 					damage *= 2;
 					System.out.println("It's super effective!");
@@ -53,15 +53,11 @@ public class Charmander extends Pokemon{
 					System.out.println("It's not very effective...");
 					damage /= 2;
 				}
-
 				foe.damage(damage);
 			}
-			if(index == 1){ //flamethrower
-				System.out.println(name + " used flamethrower");
-				foe.damage(25);
-			}
-			if(index == 2){
-				
+			if(index == 1){ //tackle
+				System.out.println(name + " used tackle");
+				foe.damage(30);
 			}
 		}
 	}
@@ -84,4 +80,5 @@ public class Charmander extends Pokemon{
 	int type(){
 		return type;
 	}
+
 }

@@ -6,7 +6,7 @@ public class Trainer{
 	boolean flee = false;
 	Pokemon target;
 	Pokemon current;
-	
+
 	public Trainer(String s){
 		name = s;
 	}
@@ -18,6 +18,7 @@ public class Trainer{
 			target = foe;
 		}
 		void action(){
+			//System.out.print(name + "'s ");
 			party[current_pokemon].attack(target, index);
 		}
 		public String description(){
@@ -29,18 +30,33 @@ public class Trainer{
 	private class Item extends Event{
 		private long priority = 2;
 		void action(){
-			party[current_pokemon].heal(35);
+			//System.out.print(name + "'s ");
+			party[current_pokemon].heal(50);
 		}
 		public String description(){
 			return "Blank";
 		}
 		
 	}
+
+	private class Flee extends Event{
+		private long priority = 10;
+		void action(){
+			flee = true;
+			System.out.println(name+" got away!");
+		}
+		public String description(){
+			return "Blank";
+		}
+		
+	}
+	
 	private class Swap extends Event{
 		final long priority = 3;
 		void action(){
 			party[current_pokemon].deactivate();
 			current_pokemon ++;
+			if(current_pokemon >= party.length) current_pokemon = 0;
 			current = party[current_pokemon];
 			current.activate();
 			System.out.println(name+" sent "+party[current_pokemon].name());
@@ -51,7 +67,20 @@ public class Trainer{
 		}
 	}
 	Event think(Pokemon[] foeParty){
-		if(party[current_pokemon].fainted()) {
+		
+		if(party[current_pokemon].hp()<15) {
+			boolean all = true;
+			int count=0;
+			while(count < party.length){
+				if(party[count].hp()>15) all = false;
+				count ++;
+			}
+			if(all && !lost()){
+				return new Flee();
+			}
+		}
+		
+		if(party[current_pokemon].fainted() || party[current_pokemon].hp()<15) {
 			if(!lost()){
 				return new Swap();
 			}
@@ -60,7 +89,7 @@ public class Trainer{
 		if(target.hp() < 20){
 			return new Attack(target);
 		}
-		if(party[current_pokemon].hp() < 50){
+		if(party[current_pokemon].hp() < 40){
 			return new Item();
 		}
 		return new Attack(target);

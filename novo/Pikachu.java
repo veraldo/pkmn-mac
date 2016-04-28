@@ -1,6 +1,7 @@
 public class Pikachu extends Pokemon{
 	final String name = "Pikachu";
 	long hp;
+	final int type = 1;
 	final long hpmax = 110;
 	boolean fainted = false;
 	boolean active = false;
@@ -42,7 +43,18 @@ public class Pikachu extends Pokemon{
 		if(!fainted && !foe.fainted()){
 			if(index == 0){ //tackle
 				System.out.println(name + " used tackle");
-				foe.damage(35);
+				TypeChart t = new TypeChart();
+				int damage = 35; 
+				if( t.typeCompare(type,foe.type())>0){
+					damage *= 2;
+					System.out.println("It's super effective!");
+				}
+				if( t.typeCompare(type,foe.type())<0){
+					System.out.println("It's not very effective...");
+					damage /= 2;
+				}
+
+				foe.damage(damage);
 			}
 			if(index == 1){ //thundershock
 				System.out.println(name + " used thundershock");
@@ -65,5 +77,8 @@ public class Pikachu extends Pokemon{
 	void deactivate(){
 		active = false;
 	}
-
+	
+	int type(){
+		return type;
+	}
 }

@@ -1,17 +1,25 @@
 public class BattleController{
 	
 	public static void main(String[] args){
+
+		Trainer t1 = new Trainer("Red");
+		Trainer t2 = new Trainer("Blue");
+		t1.party = new Pokemon[6];
+		t2.party = new Pokemon[6];
 		
-		Trainer t1 = new Trainer("Ash");
-		Trainer t2 = new Trainer("Brock");
-		t1.party = new Pokemon[2];
-		t2.party = new Pokemon[2];
+		t1.party[0] = new Squirtle();
+		t1.party[1] = new Charmander();
+		t1.party[2] = new Pikachu();
+		t1.party[3] = new Vaporeon();
+		t1.party[4] = new Bulbasaur();
+		t1.party[5] = new Pikachu();
 		
-		t1.party[0] = new Charmander();
-		t1.party[1] = new Pikachu();
-		
-		t2.party[0] = new Pikachu();
-		t2.party[1] = new Charmander();
+		t2.party[0] = new Bulbasaur();
+		t2.party[1] = new Pikachu();
+		t2.party[2] = new Vaporeon();
+		t2.party[3] = new Charmander();
+		t2.party[4] = new Pikachu();
+		t2.party[5] = new Squirtle();
 
 		t1.party[0].activate();
 		t2.party[0].activate();
