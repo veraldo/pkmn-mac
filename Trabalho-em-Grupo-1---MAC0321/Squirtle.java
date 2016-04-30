@@ -2,6 +2,7 @@
 public class Squirtle extends Pokemon{
 	final String name = "Squirtle";
 	long hp;
+	final int type = 0;
 	final long hpmax = 125;
 	boolean fainted = false;
 	boolean active = false;
@@ -43,7 +44,18 @@ public class Squirtle extends Pokemon{
 		if(!fainted && !foe.fainted()){
 			if(index == 0){ //tackle
 				System.out.println(name + " used tackle");
-				foe.damage(30);
+				TypeChart t = new TypeChart();
+				int damage = 30; 
+				if( t.typeCompare(type,foe.type())>0){
+					damage *= 2;
+					System.out.println("It's super effective!");
+				}
+				if( t.typeCompare(type,foe.type())<0){
+					System.out.println("It's not very effective...");
+					damage /= 2;
+				}
+
+				foe.damage(damage);
 			}
 			if(index == 1){ //Water Cannon
 				System.out.println(name + " used water cannon");
@@ -66,5 +78,7 @@ public class Squirtle extends Pokemon{
 	void deactivate(){
 		active = false;
 	}
-
+	int type(){
+		return type;
+	}
 }
