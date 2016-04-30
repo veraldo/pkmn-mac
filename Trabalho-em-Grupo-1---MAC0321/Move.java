@@ -6,7 +6,6 @@ public class Move{
 		int aux = 0;
 		while(aux!=1){
 			randomNumber = 10*Math.random();
-			System.out.println(randomNumber);
 			CurentTerrain = new Terrain();
 				 
 			
@@ -20,11 +19,13 @@ public class Move{
 			}
 			
 			if(randomNumber <= 2){
+				System.out.println("The battle began");
 				Battle b = new Battle(BattleController.blue,BattleController.red);
 				aux = 1;
 				b.battleBeggins();
 			}
 			if(randomNumber >= 9){
+				System.out.println("A wild Charmander appeared!");
 				Battle b = new Battle(BattleController.blue,BattleController.wildPkmn);
 				aux = 1;
 				b.battleBeggins();
