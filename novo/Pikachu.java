@@ -1,7 +1,7 @@
 public class Pikachu extends Pokemon{
 	final String name = "Pikachu";
 	long hp;
-	final int type = 1;
+	final int type = 2;
 	final long hpmax = 110;
 	boolean fainted = false;
 	boolean active = false;
